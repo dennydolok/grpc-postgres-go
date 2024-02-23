@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"grpc-go2/models"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
@@ -43,7 +42,7 @@ func (h handler) GetBook(w http.ResponseWriter, r *http.Request) {
 
 func (h handler) AddBook(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 
 	if err != nil {
 		log.Fatalf("error : %v", err)
